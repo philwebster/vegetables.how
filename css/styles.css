@@ -1,0 +1,340 @@
+/* Minimalist Sidebar Design System */
+:root {
+    /* Light Mode (Default) */
+    --color-bg: #ffffff;
+    --color-text-main: #000000;
+    --color-text-muted: #666666;
+    --color-border: #000000;
+    --color-border-light: #cccccc;
+    --color-hover: #f0f0f0;
+    --color-card-bg: #ffffff;
+    --color-card-hover-bg: #000000;
+    --color-card-hover-text: #ffffff;
+    --color-input-bg: #ffffff;
+    --color-drawer-bg: #ffffff;
+    --color-drawer-overlay: rgba(0, 0, 0, 0.2);
+
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-serif: 'Times New Roman', Times, serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #111111;
+        --color-text-main: #ffffff;
+        --color-text-muted: #aaaaaa;
+        --color-border: #ffffff;
+        --color-border-light: #444444;
+        --color-hover: #222222;
+        --color-card-bg: #111111;
+        --color-card-hover-bg: #ffffff;
+        --color-card-hover-text: #000000;
+        --color-input-bg: #222222;
+        --color-drawer-bg: #1a1a1a;
+        --color-drawer-overlay: rgba(255, 255, 255, 0.1);
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--color-bg);
+    color: var(--color-text-main);
+    overflow: hidden;
+    /* Prevent full page scroll */
+}
+
+/* Grid Layout */
+/* Grid Layout */
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* Fill screen exactly */
+}
+
+/* Header - Spans full width */
+.hero-header {
+    padding: 2rem;
+    /* border-bottom removed */
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: var(--font-main);
+    font-size: 1.5rem;
+    /* Smaller, more minimalist */
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Subtitle removed */
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    /* Centered content constraint */
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Controls */
+/* Controls */
+#season-control {
+    margin-bottom: 3rem;
+    /* border-bottom removed */
+    padding-bottom: 2rem;
+}
+
+.controls-container {
+    display: flex;
+    justify-content: center;
+    /* Center content */
+    align-items: center;
+}
+
+label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.month-strip {
+    display: flex;
+    justify-content: center;
+    /* Center items */
+    gap: 1.5rem;
+    /* Increase gap for cleaner look */
+    padding: 0.5rem 0;
+    /* border-bottom removed */
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+}
+
+.month-strip::-webkit-scrollbar {
+    display: none;
+}
+
+.month-item {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    font-weight: 500;
+    padding: 0.25rem 0;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    user-select: none;
+    white-space: nowrap;
+    margin-bottom: -2px;
+
+    /* Layout shift fix */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Reserve space for bold text */
+.month-item::after {
+    content: attr(data-text);
+    content: attr(data-text) / "";
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    user-select: none;
+    pointer-events: none;
+    font-weight: 800;
+}
+
+.month-item:hover {
+    color: var(--color-text-main);
+    border-bottom: 3px solid var(--color-border-light);
+    background: none;
+}
+
+.month-item.active {
+    color: var(--color-text-main);
+    font-weight: 800;
+    border-bottom: 3px solid var(--color-border);
+    background: none;
+}
+
+/* Header Search */
+input[type="search"] {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border-light);
+    border-radius: 20px;
+    background: var(--color-input-bg);
+    color: var(--color-text-main);
+    /* Pillow shape */
+    font-size: 0.9rem;
+    width: 250px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+input[type="search"]:focus {
+    border-color: var(--color-border);
+    width: 300px;
+    /* Expand on focus */
+}
+
+/* Vegetable Grid (Text Dense) */
+.showcase-grid {
+    display: grid;
+    /* Use auto-fit + fixed width to allow centering */
+    grid-template-columns: repeat(auto-fit, 240px);
+    justify-content: center;
+    gap: 1.5rem;
+    /* Increased gap for breathing room */
+}
+
+.text-card {
+    border: 1px solid var(--color-border-light);
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--color-card-bg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-card:hover {
+    background: var(--color-card-hover-bg);
+    color: var(--color-card-hover-text);
+    border-color: var(--color-border);
+}
+
+.text-card:hover .card-type,
+.text-card:hover .card-desc {
+    color: var(--color-text-muted);
+}
+
+.card-header {
+    margin-bottom: 0.5rem;
+}
+
+.card-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.card-type {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-top: 0.2rem;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--color-text-muted);
+    margin-top: auto;
+    /* Push to bottom if needed, or just flow */
+}
+
+/* Drawer */
+.drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-drawer-overlay);
+    /* Subtle dim */
+    z-index: 999;
+    display: none;
+    justify-content: flex-end;
+    /* Align to right */
+}
+
+.drawer-backdrop.active {
+    display: flex;
+}
+
+.drawer-panel {
+    background: var(--color-drawer-bg);
+    width: 500px;
+    max-width: 90vw;
+    height: 100vh;
+    border-left: 3px solid var(--color-border);
+    padding: 3rem;
+    position: relative;
+    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+    color: var(--color-text-main);
+}
+
+.drawer-backdrop.active .drawer-panel {
+    transform: translateX(0);
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+    color: var(--color-text-main);
+}
+
+/* Show More Button */
+.show-more-btn {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-main);
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-family: var(--font-main);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.show-more-btn:hover {
+    background: var(--color-card-hover-bg);
+    color: var(--color-card-hover-text);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    #app {
+        display: block;
+    }
+
+    #veggie-sidebar {
+        display: none;
+        /* Hide sidebar on mobile or move to bottom/menu */
+    }
+
+    .hero-header {
+        flex-direction: column;
+    }
+
+    .controls-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetables.how | Seasonal Guide</title>
+    <meta name="description" content="Discover the best in-season vegetables in North America.">
+    <!-- Standard Fonts -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <header class="hero-header">
+            <div>
+                <h1 class="logo">vegetables.how</h1>
+            </div>
+            <div class="header-search">
+                <input type="search" id="search-input" placeholder="Search...">
+            </div>
+        </header>
+
+        <!-- Sidebar Removed -->
+
+        <main>
+            <section id="season-control">
+                <div class="controls-container">
+                    <div class="control-group">
+                        <div class="month-wrapper">
+                            <!-- Month Strip -->
+                            <div class="month-strip" id="month-strip">
+                                <!-- Injected via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="vegetable-showcase" class="showcase-grid">
+                <!-- Text Cards injected here -->
+            </section>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 SeasonEat. Eat fresh, eat local.</p>
+    </footer>
+
+    <!-- Modal Container -->
+    <!-- Drawer Container -->
+    <div id="drawer-container" class="drawer-backdrop hidden">
+        <aside class="drawer-panel">
+            <button id="drawer-close" class="close-btn">&times;</button>
+            <div id="drawer-body">
+                <!-- Dynamic Content -->
+            </div>
+        </aside>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
