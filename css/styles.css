@@ -337,11 +337,48 @@ input[type="search"]:focus {
 
     .hero-header {
         flex-direction: column;
+        gap: 1.5rem;
+        /* Add breathing room between logo and search */
+        padding: 1.5rem 2rem 0.5rem 2rem;
+        /* Reduce bottom padding */
+    }
+
+    /* Make search input full width and easier to tap */
+    .header-search {
+        width: 100%;
+    }
+
+    input[type="search"] {
+        width: 100%;
+        font-size: 16px;
+        /* Prevent zoom on iOS */
+    }
+
+    input[type="search"]:focus {
+        width: 100%;
+    }
+
+    /* Compact Season Control to save space */
+    #season-control {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
     }
 
     .controls-container {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
+        align-items: center;
+        /* Center everything */
+        gap: 1rem;
+    }
+
+    /* Adjust month strip for mobile */
+    .month-strip {
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .month-item {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.25rem;
     }
 }
