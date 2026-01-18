@@ -319,8 +319,15 @@ input[type="search"]:focus {
 
 /* Responsive */
 @media (max-width: 800px) {
+    body {
+        overflow: auto;
+        /* Allow page scroll on mobile */
+    }
+
     #app {
         display: block;
+        height: auto;
+        /* Let content dictate height */
     }
 
     #veggie-sidebar {
